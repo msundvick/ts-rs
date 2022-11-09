@@ -43,7 +43,10 @@ pub(crate) fn export_type_to<T: TS + ?Sized, P: AsRef<Path>>(path: P) -> Result<
         use dprint_plugin_typescript::{configuration::ConfigurationBuilder, format_text};
 
         let fmt_cfg = ConfigurationBuilder::new().deno().build();
-        buffer = format_text(path.as_ref(), &buffer, &fmt_cfg).map_err(Formatting)?;
+        let fmt_result = format_text(path.as_ref(), &buffer, &fmt_cfg).map_err(|e| Formatting(e.to_string()))?;
+        if let Some(formatted) = fmt_result {
+            buffer = formatted;
+        }
     }
 
     if let Some(parent) = path.as_ref().parent() {

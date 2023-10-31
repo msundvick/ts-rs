@@ -102,6 +102,10 @@
 //! - `ordered-float-impl`  
 //!
 //!   Implement `TS` for `OrderedFloat` from ordered_float
+//! 
+//! - `suppress-warnings`
+//! 
+//!   Suppress compile-time messages for unknown serde annotations
 //!
 //! - `heapless-impl`  
 //! 
@@ -125,7 +129,7 @@
 //! - `flatten`
 //! - `default`
 //!
-//! When ts-rs encounters an unsupported serde attribute, a warning is emitted.
+//! When ts-rs encounters an unsupported serde attribute, a warning is emitted unless the `suppress-warnings` feature is enabled.
 //!
 //! ## contributing
 //! Contributions are always welcome!
